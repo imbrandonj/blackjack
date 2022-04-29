@@ -5,6 +5,7 @@ Author: Brandon Jenkins
 """
 
 import random
+from time import sleep
 from os import linesep
 
 
@@ -48,6 +49,7 @@ def draw_card(deck):
 def display_dealer(opponent, start=False):
     """ Displays the dealer's hand """
 
+    sleep(1)
     print('Dealer:')
     if start:  # only display before dealer plays
         output = [opponent[0], ('?', '?')]  # second card is hidden
@@ -58,6 +60,8 @@ def display_dealer(opponent, start=False):
 
 def display_player(player):
     """ Displays the player's hand """
+
+    sleep(1)
     print('Player:')
     print(f"{player}\n")
 
@@ -121,17 +125,23 @@ def decipher_winner(player, dealer, double_down=False):
     dealer_count = get_count(dealer)
 
     if player_count > dealer_count:
+        sleep(.5)
         print("Player wins.\n")
+        sleep(.5)
         if double_down:
             return 2
         return 1
     elif player_count < dealer_count:
+        sleep(.5)
         print("Dealer wins.\n")
+        sleep(.5)
         if double_down:
             return -2
         return -1
     else:
+        sleep(.5)
         print("It's a draw.\n")
+        sleep(.5)
         return 0
 
 
@@ -171,12 +181,15 @@ def create_blackjack_game(user_input):
         insurance = input("Enter 'y' or 'n': ")
 
         if dealer_count == 21 and insurance == 'y':
+            sleep(1)
             print("Dealer blackjack! Dealer wins.\n")
             return -3
         elif dealer_count == 21:
+            sleep(1)
             print("Dealer blackjack! Dealer wins.\n")
             return -1
         else:
+            sleep(1)
             print("No dealer blackjack.\n")
 
     if not user_input:
@@ -228,9 +241,11 @@ def create_blackjack_game(user_input):
                 check = check_cards(player)
 
                 if check == 'WIN':
+                    sleep(1)
                     print("Player blackjack! Player wins.\n")
                     return 4
                 elif check == 'BUST':
+                    sleep(1)
                     print("Player busts.\n")
                     return -2
 
@@ -239,6 +254,7 @@ def create_blackjack_game(user_input):
 
                 check = check_cards(player)
                 if check == 'WIN':
+                    sleep(1)
                     print("Player blackjack! Player wins.\n")
                     return 1
 
@@ -359,6 +375,7 @@ while True:
 
     print(f"Pot: {pot}\n")
     if pot == 0:
+        sleep(1)
         print("Unfortunately you are out of funds. Go get some more and come back.")
         print("Thanks for playing.")
         break
@@ -366,6 +383,7 @@ while True:
     elif pot < 0:  # honestly gibberish
         print("You double downed when you don't have the money.")
         print("I will now hack your device. Stand by.\n")
+        sleep(1)
         print("....")
         print("Exit()")
         break
