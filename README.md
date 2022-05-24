@@ -1,5 +1,5 @@
 # blackjack
 
-View live code on replit:
+Play on replit:
 
 https://replit.com/@imbrandonj/Blackjack?v=1
